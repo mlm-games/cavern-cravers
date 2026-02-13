@@ -55,11 +55,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="ScoreIcon" type="TextureRect" parent="VBoxContainer/ScoreContainer" unique_id=158658880]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 texture = ExtResource("3_jewel")
 expand_mode = 2
 stretch_mode = 5
-custom_minimum_size = Vector2(32, 32)
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer/ScoreContainer" unique_id=2097432867]
 unique_name_in_owner = true
