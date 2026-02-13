@@ -26,8 +26,7 @@ var _settings := {
 func _ready() -> void:
 	_check_haptic_support()
 	_load_sfx_library()
-	if SettingsManager:
-		SettingsManager.profile_changed.connect(_on_settings_changed)
+	SettingsManager.profile_changed.connect(_on_settings_changed)
 	_on_settings_changed()
 
 

@@ -30,9 +30,11 @@ A="*res://game/scenes/autoloads/autoload.tscn"
 DebugShortcutsManager="*res://addons/my-ecosystem-template/managers/debug_shortcuts_manager.gd"
 CavernGameManager="*res://game/scripts/autoload/cavern_game_manager.gd"
 CavernAudio="*res://game/scripts/autoload/cavern_audio.gd"
+SaveManager="*uid://rapjsuscltxk"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/handheld/orientation=4
 

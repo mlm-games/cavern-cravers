@@ -7,11 +7,11 @@ extends Node
 
 func _ready() -> void:
 	get_tree().paused = false
-	
+
 	hud.set_grid(grid)
-	
+
 	CavernGameManager.game_over.connect(_on_game_over)
-	
+
 	if CavernGameManager.has_saved_game():
 		_load_saved_game()
 	else:
@@ -29,16 +29,15 @@ func _load_saved_game() -> void:
 	if not success:
 		_start_new_game()
 		return
-	
+
 	if grid:
-		var all_data := SaveManager.load_game()
-		var save_data: Dictionary = all_data.get("cavern_cravers_game", {})
+		# load_game() already loaded the data into SaveManager.game,
+		var save_data: Dictionary = SaveManager.game.get_dict("state")
 		grid.initialize_from_save(save_data)
 
 
 func _on_game_over(_final_score: int) -> void:
 	await get_tree().create_timer(1.0).timeout
-	
 	STransitions.change_scene_with_transition("res://game/scenes/ui/game_over.tscn", "fadeToBlack")
 
 
