@@ -33,11 +33,18 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.9.1" date="2026-02-13" type="stable">
+      <description>
+        <ul>
+          <li>Make it slightly look like a cave?</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.9.0" date="2026-03-08">
       <url type="details">https://github.com/mlm-games/cavern-cravers/releases</url>
     </release>
   </releases>
-  <content_rating type="oars-1.1"></content_rating>
+  <content_rating type="oars-1.1"/>
   <developer id="io.github.mlm_games">
     <name>MLM Games</name>
   </developer>
