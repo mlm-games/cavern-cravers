@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Cavern Cravers
+Comment=A roguelike turn-based virtual board game
+Exec=cavern-cravers %F
+Icon=io.github.mlm_games.cavern-cravers
+Terminal=false
+Type=Application
+Categories=Game;CardGame;StrategyGame;

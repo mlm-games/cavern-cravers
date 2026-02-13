@@ -1,0 +1,39 @@
+name: cavern-cravers
+base: core22
+version: '0.9.0'
+summary: A roguelike turn-based virtual board game
+description: |
+  Navigate a 4x4 grid trading health with your enemies, and avoiding bombs to get rich by collecting jems from your expedition.
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+apps:
+  cavern-cravers:
+    command: cavern-cravers
+    extensions: [gnome]
+    plugs: [home, network, removable-media, unity7]
+
+parts:
+  cavern-cravers:
+    plugin: dump
+    source: ./builds/
+    source-type: local
+    stage-packages:
+      - libglu1-mesa
+      - libxcursor1
+      - libxinerama1
+      - libxrandr2
+      - libxi6
+      - libpulse0
+    override-build: |
+      craftctl default
+      chmod +x $SNAPCRAFT_PART_INSTALL/cavern-cravers
+
+layout:
+  /usr/share/cavern-cravers:
+    bind: $SNAP/usr/share/cavern-cravers

@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://p1l5dovi4uif"]
+
+[ext_resource type="Script" uid="uid://pqgfewnc2dc4" path="res://game/scripts/ui/game_over_screen.gd" id="1_gameover"]
+[ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="2_y7230"]
+[ext_resource type="Texture2D" uid="uid://d15pcb1a5enm4" path="res://game/assets/sprites/jewel.svg" id="3_jewel"]
+
+[node name="GameOver" type="Control" unique_id=1520203072]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gameover")
+
+[node name="Background" type="ColorRect" parent="." unique_id=602721821]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.08, 0.06, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1979653295]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1991035758]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 48
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=1106016122]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="ScoreContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=2076703818]
+layout_mode = 2
+alignment = 1
+
+[node name="ScoreIcon" type="TextureRect" parent="VBoxContainer/ScoreContainer" unique_id=158658880]
+layout_mode = 2
+texture = ExtResource("3_jewel")
+expand_mode = 2
+stretch_mode = 5
+custom_minimum_size = Vector2(32, 32)
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/ScoreContainer" unique_id=2097432867]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.957, 0.902, 0.847, 1)
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer" unique_id=600770412]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 20
+text = "Best: 0"
+horizontal_alignment = 1
+
+[node name="NewRecordLabel" type="Label" parent="VBoxContainer" unique_id=200146358]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "NEW RECORD!"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBoxContainer" unique_id=1631436971]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="PlayAgainButton" type="Button" parent="VBoxContainer" unique_id=1020923460]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play Again"
+script = ExtResource("2_y7230")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=398349460]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Main Menu"
+script = ExtResource("2_y7230")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"

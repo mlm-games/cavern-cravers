@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://cdbiig00btuk2"]
+
+[ext_resource type="Script" uid="uid://cx5w8q36pau6" path="res://game/scripts/ui/game_controller.gd" id="1_controller"]
+[ext_resource type="Script" uid="uid://brih0lscj2vll" path="res://game/scripts/ui/responsive_layout.gd" id="2_layout"]
+[ext_resource type="Script" uid="uid://e5wp7tx6y07n" path="res://game/scripts/grid/game_grid.gd" id="3_grid"]
+[ext_resource type="Script" uid="uid://bit6v0ki023si" path="res://game/scripts/ui/hud.gd" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://b4r20ve7gc04v" path="res://game/scenes/cards/card_base.tscn" id="5_card"]
+[ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="5_um52a"]
+[ext_resource type="Texture2D" uid="uid://b8fmj62xbl81a" path="res://game/assets/sprites/health_potion.svg" id="6_health"]
+[ext_resource type="Texture2D" uid="uid://c36vdblabjkqe" path="res://game/assets/sprites/shield.svg" id="7_shield"]
+[ext_resource type="Texture2D" uid="uid://d15pcb1a5enm4" path="res://game/assets/sprites/jewel.svg" id="8_jewel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.12, 0.1, 0.08, 0.95)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grid_bg"]
+bg_color = Color(0.18, 0.15, 0.12, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="Game" type="Control" unique_id=1335133798]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_controller")
+
+[node name="CavernResponsiveLayout" type="Control" parent="." unique_id=499510449]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_layout")
+
+[node name="Background" type="ColorRect" parent="CavernResponsiveLayout" unique_id=884497677]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22, 0.18, 0.14, 1)
+
+[node name="TopBar" type="PanelContainer" parent="CavernResponsiveLayout" unique_id=1058786573]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="MarginContainer" type="MarginContainer" parent="CavernResponsiveLayout/TopBar" unique_id=1288395998]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CavernResponsiveLayout/TopBar/MarginContainer" unique_id=487504754]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="HealthContainer" type="HBoxContainer" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer" unique_id=89838245]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HealthIcon" type="TextureRect" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/HealthContainer" unique_id=1955273043]
+layout_mode = 2
+texture = ExtResource("6_health")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HealthLabel" type="Label" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/HealthContainer" unique_id=604548240]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.9, 0.85, 1)
+theme_override_font_sizes/font_size = 18
+text = "15/15"
+
+[node name="ShieldContainer" type="HBoxContainer" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer" unique_id=973010852]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ShieldIcon" type="TextureRect" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/ShieldContainer" unique_id=784831471]
+layout_mode = 2
+texture = ExtResource("7_shield")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ShieldLabel" type="Label" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/ShieldContainer" unique_id=335123323]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer" unique_id=704196175]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ScoreIcon" type="TextureRect" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/ScoreContainer" unique_id=887552016]
+layout_mode = 2
+texture = ExtResource("8_jewel")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="ScoreLabel" type="Label" parent="CavernResponsiveLayout/TopBar/MarginContainer/HBoxContainer/ScoreContainer" unique_id=253480028]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="CavernResponsiveLayout/TopBar/MarginContainer" unique_id=2141959670]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="UndoButton" type="Button" parent="CavernResponsiveLayout/TopBar/MarginContainer/ButtonContainer" unique_id=1905397093]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "↩"
+script = ExtResource("5_um52a")
+
+[node name="MenuButton" type="Button" parent="CavernResponsiveLayout/TopBar/MarginContainer/ButtonContainer" unique_id=1128208664]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "☰"
+script = ExtResource("5_um52a")
+
+[node name="GridHolder" type="CenterContainer" parent="CavernResponsiveLayout" unique_id=167517467]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridBackground" type="Panel" parent="CavernResponsiveLayout/GridHolder" unique_id=656319134]
+custom_minimum_size = Vector2(340, 340)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_grid_bg")
+
+[node name="GameGrid" type="Control" parent="CavernResponsiveLayout/GridHolder/GridBackground" unique_id=990300294]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_grid")
+card_scene = ExtResource("5_card")
+
+[node name="GridContainer" type="Control" parent="CavernResponsiveLayout/GridHolder/GridBackground/GameGrid" unique_id=947742481]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CavernHUD" type="Control" parent="." unique_id=1228086668]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_hud")
+
+[node name="DamageFlash" type="ColorRect" parent="CavernHUD" unique_id=857618377]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.9, 0.15, 0.15, 0)

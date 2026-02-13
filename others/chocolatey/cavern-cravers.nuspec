@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>cavern-cravers</id>
+    <version>0.9.0</version>
+    <title>Cavern Cravers</title>
+    <authors>mlmstudios</authors>
+    <projectUrl>https://github.com/mlm-games/cavern-cravers</projectUrl>
+    <licenseUrl>https://github.com/mlm-games/cavern-cravers/blob/main/LICENSE</licenseUrl>
+    <iconUrl>https://cdn.statically.io/gh/mlm-games/cavern-cravers/0.9.0/fastlane/metadata/android/en-US/images/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Navigate a 4x4 grid trading health with your enemies, and avoiding bombs to get rich by collecting jems from your expedition.</description>
+    <summary>A roguelike turn-based virtual board game</summary>
+    <tags>games card-game puzzle strategy roguelike</tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://tfqarr8skvu8"]
+
+[ext_resource type="Script" uid="uid://bqil0o8ei7kk1" path="res://game/scripts/ui/main_menu.gd" id="1_mainmenu"]
+[ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="2_fdqrn"]
+[ext_resource type="Texture2D" uid="uid://d15pcb1a5enm4" path="res://game/assets/sprites/jewel.svg" id="3_jewel"]
+
+[node name="MainMenu" type="Control" unique_id=866190587]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=320258308]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.16, 0.12, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=195413781]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -250.0
+offset_right = 150.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1898183219]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.957, 0.902, 0.847, 1)
+theme_override_font_sizes/font_size = 36
+text = "Cavern Cravers"
+horizontal_alignment = 1
+
+[node name="HighScoreContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1160272172]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="HighScoreIcon" type="TextureRect" parent="VBoxContainer/HighScoreContainer" unique_id=1160272174]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 2
+texture = ExtResource("3_jewel")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="HighScoreLabel" type="Label" parent="VBoxContainer/HighScoreContainer" unique_id=1160272173]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.7, 0.5, 1)
+theme_override_font_sizes/font_size = 18
+text = "Best: 0"
+
+[node name="Spacer" type="Control" parent="VBoxContainer" unique_id=1607213537]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=1387774937]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=646707787]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=2005918236]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="TutorialButton" type="Button" parent="VBoxContainer" unique_id=267226326]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Tutorial"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer" unique_id=884194106]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=651957223]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
