@@ -1,1 +1,132 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="124" height="124" x="2" y="2" fill="#363d52" stroke="#212532" stroke-width="4" rx="14"/><g fill="#fff" transform="translate(12.322 12.322)scale(.101)"><path d="M105 673v33q407 354 814 0v-33z"/><path fill="#478cbf" d="m105 673 152 14q12 1 15 14l4 67 132 10 8-61q2-11 15-15h162q13 4 15 15l8 61 132-10 4-67q3-13 15-14l152-14V427q30-39 56-81-35-59-83-108-43 20-82 47-40-37-88-64 7-51 8-102-59-28-123-42-26 43-46 89-49-7-98 0-20-46-46-89-64 14-123 42 1 51 8 102-48 27-88 64-39-27-82-47-48 49-83 108 26 42 56 81zm0 33v39c0 276 813 276 814 0v-39l-134 12-5 69q-2 10-14 13l-162 11q-12 0-16-11l-10-65H446l-10 65q-4 11-16 11l-162-11q-12-3-14-13l-5-69z"/><path d="M483 600c0 34 58 34 58 0v-86c0-34-58-34-58 0z"/><circle cx="725" cy="526" r="90"/><circle cx="299" cy="526" r="90"/></g><g fill="#414042" transform="translate(12.322 12.322)scale(.101)"><circle cx="307" cy="532" r="60"/><circle cx="717" cy="532" r="60"/></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="icon.svg"
+   inkscape:export-filename="icon.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="0.80636128"
+     inkscape:cx="190.98139"
+     inkscape:cy="236.24646"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter3"
+       x="-0.037261855"
+       y="-0.051415583"
+       width="1.0745237"
+       height="1.1028312">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.096877664"
+         id="feGaussianBlur3" />
+    </filter>
+    <symbol
+       id="g4">
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="path3"
+         cx="247.71649"
+         cy="256"
+         r="37.867489"
+         inkscape:label="EyesOuter" />
+      <circle
+         style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:8.52884;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="path4"
+         cx="252.44994"
+         cy="256"
+         r="14.802605"
+         inkscape:label="eyes" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.16521;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="circle4"
+         cx="256.44995"
+         cy="258"
+         r="3.7579198"
+         inkscape:label="White" />
+    </symbol>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke markers fill;opacity:0.351"
+       id="rect2"
+       width="140.42528"
+       height="101.76888"
+       x="137.26964"
+       y="-124.28043"
+       ry="9.8613234"
+       inkscape:label="IconsUiShadowTemplateDropShadowPickOne" />
+    <rect
+       style="opacity:0.15;fill:#4d4d4d;fill-opacity:1;stroke:#4d4d4d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke markers fill;filter:url(#filter3)"
+       id="rect3"
+       width="140.42528"
+       height="101.76888"
+       x="130.16948"
+       y="-131.38058"
+       ry="9.8613234"
+       inkscape:label="IconsUiShadowTemplateSoftShadowPickOne" />
+    <rect
+       style="fill:#fce8b1;fill-opacity:1;stroke:#4d4d4d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="rect1"
+       width="140.425"
+       height="101.76888"
+       x="134.11401"
+       y="-127.80277"
+       ry="10"
+       inkscape:label="IconsUiShadowTemplateObject" />
+    <rect
+       style="opacity:0.4;fill:#fcffff;fill-opacity:1;stroke:none;stroke-width:5.03876;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="rect4"
+       width="70.75679"
+       height="51.278896"
+       x="134.29173"
+       y="-126.9584"
+       ry="5.0387602"
+       inkscape:label="Highlight" />
+    <ellipse
+       style="fill:#4a8c3f;stroke:#e8dcc8;stroke-width:45.3963;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       id="path10"
+       cx="254.81665"
+       cy="247.22832"
+       rx="447.66812"
+       ry="415.43604" />
+    <path
+       id="path9"
+       style="fill:#c9a830;stroke:#e8dcc8;stroke-width:21.6322;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 256,-116.44727 c -35.34881,-4.5e-4 -60.27757,4.02762 -100.6875,-26.98046 C 114.90257,-174.43581 54.624973,-245.87969 54.625,-317.82422 h 156.19922 v 38.79297 c 0,15.80185 12.72159,28.52344 28.52344,28.52344 h 37.20312 c 15.80185,0 28.52344,-12.72159 28.52344,-28.52344 v -38.79297 H 457.375 c 3e-5,71.94453 -47.4338,133.5329 -100.6875,174.39649 -27.56616,21.15256 -65.33869,26.98001 -100.6875,26.98046 z"
+       transform="scale(1,-1)"
+       sodipodi:nodetypes="czccssssccac" />
+  </g>
+</svg>
