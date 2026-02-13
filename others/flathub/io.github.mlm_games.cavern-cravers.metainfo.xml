@@ -12,36 +12,24 @@
   <url type="homepage">https://github.com/mlm-games/cavern-cravers</url>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png</image>
+      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/1.png</image>
       <caption>Main Menu Screenshot</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png</image>
-      <caption>Settings screenshot 1</caption>
+      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/2.png</image>
+      <caption>Tutorial screenshot 1</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/3.png</image>
-      <caption>Settings screenshot 2</caption>
+      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/3.png</image>
+      <caption>Board screenshot 2 (old snakes)</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/4.png</image>
-      <caption>Another screenshot</caption>
+      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/4.png</image>
+      <caption>Before death screenshot</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/5.png</image>
-      <caption>Another screenshot</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/6.png</image>
-      <caption>Another screenshot</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/7.png</image>
-      <caption>Another screenshot</caption>
-    </screenshot>
-    <screenshot>
-      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/phoneScreenshots/8.png</image>
-      <caption>Another screenshot</caption>
+      <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/5.png</image>
+      <caption>Game over screenshot</caption>
     </screenshot>
   </screenshots>
   <releases>
