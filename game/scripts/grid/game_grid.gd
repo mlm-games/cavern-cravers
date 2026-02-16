@@ -581,7 +581,10 @@ func _handle_blast_effect(positions: Array) -> void:
 func _is_adjacent_to_player(pos: Vector2i) -> bool:
 	var player_pos := CavernGameManager.player_position if CavernGameManager else Vector2i(1, 1)
 	var diff := pos - player_pos
-	return max(abs(diff.x), abs(diff.y)) == 1
+	if SettingsManager.get_setting("gameplay", "diagonal_movement", false):
+		return max(abs(diff.x), abs(diff.y)) == 1
+	else:
+		return abs(diff.x) + abs(diff.y) == 1
 
 
 func _is_valid_position(pos: Vector2i) -> bool:
