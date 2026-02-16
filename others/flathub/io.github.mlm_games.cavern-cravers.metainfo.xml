@@ -33,6 +33,13 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="0.9.2" date="2026-02-16" type="stable">
+      <description>
+        <ul>
+          <li>add a setting to toggle diagonal movement (helps with softlocks)</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.9.1" date="2026-02-13" type="stable">
       <description>
         <ul>
