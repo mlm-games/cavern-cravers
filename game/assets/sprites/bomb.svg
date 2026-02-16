@@ -25,8 +25,8 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="px"
      inkscape:zoom="1.9559987"
-     inkscape:cx="239.7752"
-     inkscape:cy="257.41325"
+     inkscape:cx="239.77521"
+     inkscape:cy="257.41326"
      inkscape:window-width="1536"
      inkscape:window-height="902"
      inkscape:window-x="0"
@@ -136,7 +136,7 @@
        inkscape:label="Highlight" />
     <path
        id="rect6"
-       style="fill:#1a1a2e;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill;fill-opacity:1"
+       style="fill:#f2c744;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke markers fill;fill-opacity:1"
        d="m 271.29012,133.95472 c -11.30638,11.72002 -11.0974,49.19253 -11.0974,49.19253 -0.50555,1.90065 -3.54266,1.59986 -5.01204,0.29257 -1.46937,-1.30729 -1.59987,-3.54265 -0.29258,-5.01203 0,0 -4.67112,-40.91764 6.68991,-52.65272 9.76122,-10.08262 33.20056,-15.37856 46.27283,-6.87687 26.85219,17.46362 -28.12832,6.31562 -36.56072,15.05652 z"
        sodipodi:nodetypes="sssssss" />
     <rect

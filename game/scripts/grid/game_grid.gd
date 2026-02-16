@@ -1,6 +1,5 @@
 class_name GameGrid
 extends Control
-## Main 4x4 grid
 
 signal move_completed
 signal grid_updated
@@ -694,7 +693,8 @@ func restore_from_undo(undo_state: Dictionary) -> void:
 				card.queue_free()
 				cards[x][y] = null
 	
-	var old_player_pos: Vector2i = undo_state.position
+	var pos_data: Dictionary = undo_state.get("position", {"x": 1, "y": 1})
+	var old_player_pos := Vector2i(int(pos_data.get("x", 1)), int(pos_data.get("y", 1)))
 	var current_pos := CavernGameManager.player_position if CavernGameManager else Vector2i(1, 1)
 	cards[current_pos.x][current_pos.y] = null
 	cards[old_player_pos.x][old_player_pos.y] = player_card
