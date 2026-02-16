@@ -10,6 +10,7 @@
   </description>
   <launchable type="desktop-id">io.github.mlm_games.cavern-cravers.desktop</launchable>
   <url type="homepage">https://github.com/mlm-games/cavern-cravers</url>
+  <url type="vcs-browser">https://github.com/mlm-games/cavern-cravers</url>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/mlm-games/cavern-cravers/refs/tags/0.9.0/fastlane/metadata/android/en-US/images/tvScreenshots/1.png</image>
