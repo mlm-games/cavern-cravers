@@ -30,6 +30,8 @@ func _connect_signals() -> void:
 	CavernGameManager.score_changed.connect(_on_score_changed)
 	CavernGameManager.shield_changed.connect(_on_shield_changed)
 	CavernGameManager.undo_used.connect(_on_undo_used)
+	if CavernGameManager.has_signal("undo_restored") and not CavernGameManager.undo_restored.is_connected(_on_undo_restored):
+		CavernGameManager.undo_restored.connect(_on_undo_restored)
 
 
 func _connect_buttons() -> void:
@@ -96,6 +98,11 @@ func _flash_damage() -> void:
 		damage_flash.color.a = 0.35
 		var tween := create_tween()
 		tween.tween_property(damage_flash, "color:a", 0.0, 0.4)
+
+
+func _on_undo_restored() -> void:
+	if undo_button:
+		undo_button.disabled = false
 
 
 func _on_undo_pressed() -> void:

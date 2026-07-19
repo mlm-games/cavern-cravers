@@ -62,6 +62,10 @@ func _gui_input(event: InputEvent) -> void:
 			accept_event()
 
 
+func _on_gui_input(event: InputEvent) -> void:
+	_gui_input(event)
+
+
 func _on_mouse_entered() -> void:
 	if is_interactable and card_type != CardType.PLAYER and highlight:
 		highlight.visible = true

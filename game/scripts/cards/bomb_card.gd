@@ -107,24 +107,28 @@ func _on_turn_ended() -> void:
 
 func explode() -> void:
 	var affected_positions := get_explosion_positions()
-	
+
 	var explosion_data := {
 		"source_position": grid_position,
 		"affected_positions": affected_positions,
 		"damage": base_damage,
 		"bomb_type": bomb_type
 	}
-	
+
 	CavernAudio.play_sfx("explosion")
 	CavernAudio.vibrate_explosion()
-	
+
 	var grid := get_tree().get_first_node_in_group("grid")
-	grid.handle_explosion(explosion_data)
+	if grid and grid.has_method("enqueue_explosion"):
+		grid.enqueue_explosion(explosion_data)
+	elif grid and grid.has_method("handle_explosion"):
+		grid.handle_explosion(explosion_data)
 
 
 func get_explosion_positions() -> Array[Vector2i]:
 	var positions: Array[Vector2i] = []
-	
+	var diagonals_enabled = SettingsManager.get_setting("gameplay", "diagonal_movement", false)
+
 	match bomb_type:
 		BombType.BOMB:
 			positions = [
@@ -134,13 +138,25 @@ func get_explosion_positions() -> Array[Vector2i]:
 				grid_position + Vector2i.RIGHT
 			]
 		BombType.DYNAMITE:
-			positions = [
-				grid_position + Vector2i(-1, -1),
-				grid_position + Vector2i(1, -1),
-				grid_position + Vector2i(-1, 1),
-				grid_position + Vector2i(1, 1)
-			]
-	
+			if diagonals_enabled:
+				positions = [
+					grid_position + Vector2i(-1, -1),
+					grid_position + Vector2i(1, -1),
+					grid_position + Vector2i(-1, 1),
+					grid_position + Vector2i(1, 1)
+				]
+			else:
+				positions = [
+					grid_position + Vector2i.UP,
+					grid_position + Vector2i.DOWN,
+					grid_position + Vector2i.LEFT,
+					grid_position + Vector2i.RIGHT,
+					grid_position + Vector2i(-1, -1),
+					grid_position + Vector2i(1, -1),
+					grid_position + Vector2i(-1, 1),
+					grid_position + Vector2i(1, 1)
+				]
+
 	return positions
 
 

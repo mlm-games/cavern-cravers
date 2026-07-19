@@ -6,6 +6,7 @@ signal score_changed(new_score: int)
 signal shield_changed(new_shield: int)
 signal game_over(final_score: int)
 signal undo_used
+signal undo_restored
 signal turn_ended
 
 const GRID_SIZE := 4
@@ -69,6 +70,12 @@ func save_undo_state(grid_state: Array) -> void:
 	}
 
 
+func grant_emergency_undo() -> void:
+	if not _undo_state.is_empty():
+		undo_available = true
+		undo_restored.emit()
+
+
 func perform_undo() -> Dictionary:
 	if not undo_available or _undo_state.is_empty():
 		return {}
@@ -86,7 +93,7 @@ func perform_undo() -> Dictionary:
 	shield_changed.emit(player_shield)
 	undo_used.emit()
 
-	return _undo_state
+	return _undo_state.duplicate(true)
 
 
 func take_damage(amount: int) -> void:
