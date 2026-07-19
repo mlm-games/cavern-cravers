@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyp0o6kaxc0l6"
-path="res://.godot/imported/5.png-538edd5e2c23a24d3fcc346b96eb5d34.ctex"
+path="res://.godot/imported/5.png-f7bb6a61d5c93c4c22561bea713ba469.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://fastlane/metadata/android/en-US/images/tvScreenshots/5.png"
-dest_files=["res://.godot/imported/5.png-538edd5e2c23a24d3fcc346b96eb5d34.ctex"]
+source_file="res://fastlane/metadata/android/en-US/images/phoneScreenshots/5.png"
+dest_files=["res://.godot/imported/5.png-f7bb6a61d5c93c4c22561bea713ba469.ctex"]
 
 [params]
 
