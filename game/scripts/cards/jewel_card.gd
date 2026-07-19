@@ -58,12 +58,12 @@ func _update_visuals() -> void:
 	
 	var style := StyleBoxFlat.new()
 	style.bg_color = data.color
-	style.corner_radius_top_left = 10
-	style.corner_radius_top_right = 10
-	style.corner_radius_bottom_left = 10
-	style.corner_radius_bottom_right = 10
-	style.border_color = Color(1, 1, 0.85, 0.6)
-	style.set_border_width_all(2)
+	style.set_corner_radius_all(10)
+	style.border_color = data.color.darkened(0.5)
+	style.set_border_width_all(3)
+	style.shadow_color = Color(0, 0, 0, 0.35)
+	style.shadow_size = 4
+	style.shadow_offset = Vector2(0, 2)
 	background.add_theme_stylebox_override("panel", style)
 
 

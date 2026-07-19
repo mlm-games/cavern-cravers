@@ -71,17 +71,19 @@ func _update_visuals() -> void:
 	var style := StyleBoxFlat.new()
 	
 	if timer <= 1:
-		style.bg_color = Color(0.9, 0.15, 0.1)
+		style.bg_color = Color(0.88, 0.18, 0.12)
 		_pulse_urgent()
 	elif timer == 2:
-		style.bg_color = Color(0.9, 0.5, 0.1)
+		style.bg_color = Color(0.88, 0.48, 0.12)
 	else:
-		style.bg_color = Color(0.7, 0.4, 0.15)
+		style.bg_color = Color(0.68, 0.38, 0.14)
+	style.border_color = style.bg_color.darkened(0.5)
 	
-	style.corner_radius_top_left = 8
-	style.corner_radius_top_right = 8
-	style.corner_radius_bottom_left = 8
-	style.corner_radius_bottom_right = 8
+	style.set_border_width_all(3)
+	style.set_corner_radius_all(10)
+	style.shadow_color = Color(0, 0, 0, 0.35)
+	style.shadow_size = 4
+	style.shadow_offset = Vector2(0, 2)
 	background.add_theme_stylebox_override("panel", style)
 
 

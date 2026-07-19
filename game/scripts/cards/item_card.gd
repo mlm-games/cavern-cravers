@@ -21,27 +21,27 @@ const ITEM_DATA := {
 	ItemType.HEALTH_POTION: {
 		"name": "Health Potion",
 		"value_range": Vector2i(3, 5),
-		"color": Color(0.25, 0.65, 0.35)
+		"color": Color(0.22, 0.58, 0.32),
 	},
 	ItemType.POISON_POTION: {
 		"name": "Poison Potion",
 		"value_range": Vector2i(2, 4),
-		"color": Color(0.55, 0.25, 0.55)
+		"color": Color(0.48, 0.22, 0.55),
 	},
 	ItemType.SHIELD: {
 		"name": "Shield",
 		"value_range": Vector2i(2, 5),
-		"color": Color(0.3, 0.5, 0.75)
+		"color": Color(0.28, 0.48, 0.72),
 	},
 	ItemType.BLAST_SCROLL: {
 		"name": "Blast Scroll",
 		"value_range": Vector2i(0, 0),
-		"color": Color(0.75, 0.55, 0.25)
+		"color": Color(0.72, 0.48, 0.18),
 	},
 	ItemType.DIAGONAL_BLAST_SCROLL: {
 		"name": "Diagonal Blast",
 		"value_range": Vector2i(0, 0),
-		"color": Color(0.65, 0.45, 0.3)
+		"color": Color(0.62, 0.36, 0.22),
 	}
 }
 
@@ -96,10 +96,12 @@ func _update_visuals() -> void:
 	
 	var style := StyleBoxFlat.new()
 	style.bg_color = data.color
-	style.corner_radius_top_left = 8
-	style.corner_radius_top_right = 8
-	style.corner_radius_bottom_left = 8
-	style.corner_radius_bottom_right = 8
+	style.border_color = data.color.darkened(0.5)
+	style.set_border_width_all(3)
+	style.set_corner_radius_all(10)
+	style.shadow_color = Color(0, 0, 0, 0.35)
+	style.shadow_size = 4
+	style.shadow_offset = Vector2(0, 2)
 	background.add_theme_stylebox_override("panel", style)
 
 

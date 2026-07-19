@@ -59,24 +59,18 @@ func _update_visuals() -> void:
 	if type_label:
 		type_label.text = ""
 	
-	var base_style = background.get_theme_stylebox("panel")
-	var style: StyleBoxFlat
-	if base_style is StyleBoxFlat:
-		style = base_style.duplicate() as StyleBoxFlat
-	else:
-		style = StyleBoxFlat.new()
-		style.corner_radius_top_left = 8
-		style.corner_radius_top_right = 8
-		style.corner_radius_bottom_left = 8
-		style.corner_radius_bottom_right = 8
-	
-	style.bg_color = Color(0.15, 0.5, 0.2)
-	
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.18, 0.48, 0.24)
+	style.set_corner_radius_all(10)
+	style.shadow_color = Color(0, 0, 0, 0.35)
+	style.shadow_size = 4
+	style.shadow_offset = Vector2(0, 2)
 	if shield > 0:
-		style.border_color = Color(0.4, 0.6, 1.0)
-		style.set_border_width_all(3)
+		style.border_color = Color(0.45, 0.7, 1.0)
+		style.set_border_width_all(4)
 	else:
-		style.set_border_width_all(0)
+		style.border_color = style.bg_color.darkened(0.5)
+		style.set_border_width_all(3)
 	
 	background.add_theme_stylebox_override("panel", style)
 
