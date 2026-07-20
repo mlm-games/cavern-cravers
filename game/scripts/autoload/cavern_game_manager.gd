@@ -128,7 +128,7 @@ func perform_undo() -> Dictionary:
 	return _undo_state.duplicate(true)
 
 
-func take_damage(amount: int) -> void:
+func take_damage(amount: int, min_health: int = 0) -> void:
 	var remaining_damage := amount
 
 	if player_shield > 0:
@@ -141,7 +141,7 @@ func take_damage(amount: int) -> void:
 		shield_changed.emit(player_shield)
 
 	if remaining_damage > 0:
-		player_health = maxi(0, player_health - remaining_damage)
+		player_health = maxi(min_health, player_health - remaining_damage)
 		health_changed.emit(player_health, MAX_HEALTH)
 
 	if player_health <= 0:

@@ -119,7 +119,7 @@ func use_item() -> Dictionary:
 			CavernAudio.play_sfx("heal")
 			
 		ItemType.POISON_POTION:
-			CavernGameManager.take_damage(card_value)
+			CavernGameManager.take_damage(card_value, 1)
 			CavernAudio.play_sfx("hit")
 			CavernAudio.vibrate_damage()
 			
