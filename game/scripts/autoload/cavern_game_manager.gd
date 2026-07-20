@@ -65,7 +65,7 @@ func is_mode_unlocked(mode: String) -> bool:
 			return SaveManager.get_unlock_high_score() >= UNLOCK_COMBINED
 		MODE_DIAGONAL:
 			return SaveManager.get_high_score(MODE_ADJACENT) >= UNLOCK_DIAGONAL \
-			    or SaveManager.get_high_score(MODE_COMBINED) >= UNLOCK_DIAGONAL_FROM_COMBINED
+				or SaveManager.get_high_score(MODE_COMBINED) >= UNLOCK_DIAGONAL_FROM_COMBINED
 		_:
 			return true
 

@@ -4,7 +4,8 @@ extends Card
 const ENEMY_ICONS := {
 	"bat": preload("res://game/assets/sprites/bat.svg"),
 	"snake": preload("res://game/assets/sprites/snake.svg"),
-	"spider": preload("res://game/assets/sprites/spider.svg")
+	"spider": preload("res://game/assets/sprites/spider.svg"),
+	"loctopus": preload("res://game/assets/sprites/loctopus.svg"),
 }
 
 const ENEMIES := {
@@ -20,7 +21,18 @@ const ENEMIES := {
 	"spider": {
 		"health_range": Vector2i(2, 4),
 		"color": Color(0.72, 0.38, 0.18),       # rust / amber
-	}
+	},
+	"loctopus": {
+		"health_range": Vector2i(3, 6),
+		"color": Color(0.25, 0.45, 0.35),       # mossy teal
+	},
+}
+
+## Score thresholds for loctopus to start spawning, per movement mode
+const LOCTOPUS_SCORE_THRESHOLD := {
+	"adjacent": 600,
+	"combined": 1000,
+	"diagonal": 300,
 }
 
 
@@ -72,7 +84,7 @@ func resolve_combat() -> Dictionary:
 	var result := {
 		"damage_dealt": damage,
 		"enemy_killed": true,
-		"jewel_reward": _get_jewel_reward()
+		"jewel_reward": _get_jewel_reward(),
 	}
 
 	CavernGameManager.take_damage(damage)
@@ -98,5 +110,9 @@ func _get_jewel_reward() -> Dictionary:
 	return {"type": jewel_type, "value": value}
 
 
-static func get_random_enemy_type() -> String:
-	return ENEMIES.keys().pick_random()
+static func get_random_enemy_type(score: int = 0, mode: String = "adjacent") -> String:
+	var pool: Array[String] = ["bat", "snake", "spider"]
+	var threshold = LOCTOPUS_SCORE_THRESHOLD.get(mode, 600)
+	if score >= threshold:
+		pool.append("loctopus")
+	return pool.pick_random()

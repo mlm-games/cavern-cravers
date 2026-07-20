@@ -303,7 +303,9 @@ func _spawn_enemy_at(pos: Vector2i, spawn_direction: Vector2i = Vector2i.ZERO) -
 	card.set_script(load("res://game/scripts/cards/enemy_card.gd"))
 	var enemy := card as EnemyCard
 	var difficulty := CavernGameManager.get_difficulty_scale() if CavernGameManager else 1.0
-	enemy.setup_enemy(EnemyCard.get_random_enemy_type(), pos, difficulty)
+	var score := CavernGameManager.score if CavernGameManager else 0
+	var mode := _get_movement_mode()
+	enemy.setup_enemy(EnemyCard.get_random_enemy_type(score, mode), pos, difficulty)
 	_place_card(enemy, pos, spawn_direction)
 
 
@@ -498,6 +500,8 @@ func _process_player_move(target_pos: Vector2i) -> void:
 
 	await _shift_and_spawn_cards()
 
+	await _activate_loctopus_passives()
+
 	if CavernGameManager:
 		CavernGameManager.end_turn()
 
@@ -574,7 +578,9 @@ func _create_random_card_for_position(pos: Vector2i, initial_fill: bool = false)
 		card.set_script(load("res://game/scripts/cards/enemy_card.gd"))
 		var enemy := card as EnemyCard
 		var difficulty := CavernGameManager.get_difficulty_scale() if CavernGameManager else 1.0
-		enemy.setup_enemy(EnemyCard.get_random_enemy_type(), pos, difficulty)
+		var score := CavernGameManager.score if CavernGameManager else 0
+		var mode := _get_movement_mode()
+		enemy.setup_enemy(EnemyCard.get_random_enemy_type(score, mode), pos, difficulty)
 	elif roll < 0.60:
 		card = _create_card_instance()
 		card.set_script(load("res://game/scripts/cards/jewel_card.gd"))
@@ -742,6 +748,89 @@ func _handle_blast_effect(positions: Array) -> void:
 		await card.play_death_animation()
 		card.queue_free()
 		cards[pos.x][pos.y] = null
+
+
+#TODO: Change it to activate_passive on a match fn so that more enemies with passives (like an enemy (minecraft fake block stronghold guy), which moves towards the player every turn, etc.). Would also need to balance with health upgrades for a tasklist like kill 3 spiders (no, cant be random, do later)?.
+func _activate_loctopus_passives() -> void:
+	for x in GRID_SIZE:
+		for y in GRID_SIZE:
+			var card: Card = cards[x][y]
+			if card and card.card_subtype == "loctopus":
+				await _handle_loctopus_swap(Vector2i(x, y))
+
+
+func _handle_loctopus_swap(center: Vector2i) -> void:
+	var pairs := _get_swappable_tile_pairs(center)
+	if pairs.is_empty():
+		return
+
+	var pair: Array = pairs.pick_random()
+	var pos_a: Vector2i = pair[0]
+	var pos_b: Vector2i = pair[1]
+
+	await _swap_cards_at(pos_a, pos_b)
+
+	if CavernAudio:
+		CavernAudio.play_sfx("move")
+
+
+func _get_swappable_tile_pairs(center: Vector2i) -> Array:
+	var pairs: Array = []
+	var mode := _get_movement_mode()
+	var allow_diag := mode in ["combined", "diagonal"]
+
+	var dirs: Array[Vector2i] = [Vector2i.RIGHT, Vector2i.DOWN]
+	if allow_diag:
+		dirs.append(Vector2i(1, 1))
+		dirs.append(Vector2i(1, -1))
+
+	for dx in range(-1, 2):
+		for dy in range(-1, 2):
+			var pos_a := center + Vector2i(dx, dy)
+			if not _is_valid_position(pos_a):
+				continue
+			for dir in dirs:
+				var pos_b := pos_a + dir
+				if not _is_valid_position(pos_b):
+					continue
+				var diff := pos_b - center
+				if absi(diff.x) > 1 or absi(diff.y) > 1:
+					continue
+
+				var card_a: Card = cards[pos_a.x][pos_a.y]
+				var card_b: Card = cards[pos_b.x][pos_b.y]
+
+				if card_a == player_card or card_b == player_card:
+					continue
+				if card_a == null and card_b == null:
+					continue
+
+				pairs.append([pos_a, pos_b])
+
+	return pairs
+
+
+func _swap_cards_at(pos_a: Vector2i, pos_b: Vector2i) -> void:
+	var card_a: Card = cards[pos_a.x][pos_a.y]
+	var card_b: Card = cards[pos_b.x][pos_b.y]
+
+	cards[pos_a.x][pos_a.y] = card_b
+	cards[pos_b.x][pos_b.y] = card_a
+
+	var tween := create_tween()
+	tween.set_parallel(true)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+
+	if card_a:
+		card_a.grid_position = pos_b
+		tween.tween_property(card_a, "position", _grid_to_pixel(pos_b), 0.25)
+	if card_b:
+		card_b.grid_position = pos_a
+		tween.tween_property(card_b, "position", _grid_to_pixel(pos_a), 0.25)
+
+	if card_a or card_b:
+		await tween.finished
 
 
 func _get_movement_mode() -> String:
