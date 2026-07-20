@@ -127,7 +127,10 @@ func explode() -> void:
 
 func get_explosion_positions() -> Array[Vector2i]:
 	var positions: Array[Vector2i] = []
-	var diagonals_enabled = SettingsManager.get_setting("gameplay", "diagonal_movement", false)
+	var mode := "adjacent"
+	if CavernGameManager and CavernGameManager.has_method("get_movement_mode"):
+		mode = CavernGameManager.get_movement_mode()
+	var diagonals_enabled := mode in ["combined", "diagonal"]
 
 	match bomb_type:
 		BombType.BOMB:

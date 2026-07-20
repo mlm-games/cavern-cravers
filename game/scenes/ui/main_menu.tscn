@@ -78,6 +78,27 @@ text = "Play"
 script = ExtResource("2_fdqrn")
 metadata/_custom_type_script = "uid://cmo5qw3rubish"
 
+[node name="SafeModeButton" type="Button" parent="VBoxContainer" unique_id=1287774938]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "Unlocks at 300"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="HardModeButton" type="Button" parent="VBoxContainer" unique_id=1287774939]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "Hard Mode"
+script = ExtResource("2_fdqrn")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
 [node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=646707787]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 50)

@@ -53,8 +53,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		dir = Vector2i(-1, 0)
 	elif event.is_action_pressed("ui_right") or (event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_D):
 		dir = Vector2i(1, 0)
-	elif SettingsManager.get_setting("gameplay", "diagonal_movement", false):
-		if event is InputEventKey and event.pressed and not event.echo:
+	else:
+		var mode := _get_movement_mode()
+		if mode in ["combined", "diagonal"] and event is InputEventKey and event.pressed and not event.echo:
 			match event.keycode:
 				KEY_KP_7: dir = Vector2i(-1, -1)
 				KEY_KP_9: dir = Vector2i(1, -1)
@@ -595,13 +596,14 @@ func _create_random_card_for_position(pos: Vector2i, initial_fill: bool = false)
 		var bomb := card as BombCard
 		var difficulty := CavernGameManager.get_difficulty_scale() if CavernGameManager else 1.0
 		var btype := BombCard.BombType.BOMB
-		if SettingsManager.get_setting("gameplay", "diagonal_movement", false):
+		var mode := _get_movement_mode()
+		if mode in ["combined", "diagonal"]:
 			btype = BombCard.get_random_bomb_type()
 		else:
 			if randf() < 0.35:
 				btype = BombCard.BombType.DYNAMITE
 		bomb.setup_bomb(btype, pos, difficulty)
-		if btype == BombCard.BombType.DYNAMITE and not SettingsManager.get_setting("gameplay", "diagonal_movement", false):
+		if btype == BombCard.BombType.DYNAMITE and mode == "adjacent":
 			bomb.timer = 4
 			bomb.card_value = 4
 			bomb._update_visuals()
@@ -742,17 +744,27 @@ func _handle_blast_effect(positions: Array) -> void:
 		cards[pos.x][pos.y] = null
 
 
+func _get_movement_mode() -> String:
+	if CavernGameManager and CavernGameManager.has_method("get_movement_mode"):
+		return CavernGameManager.get_movement_mode()
+	return "adjacent"
+
+
 func _get_adjacent_positions(origin: Vector2i) -> Array[Vector2i]:
 	var result: Array[Vector2i] = []
-	var diagonals = SettingsManager.get_setting("gameplay", "diagonal_movement", false)
+	var mode := _get_movement_mode()
+	var allow_diag := mode == "combined" or mode == "diagonal"
+	var diag_only := mode == "diagonal"
 	for dx in range(-1, 2):
 		for dy in range(-1, 2):
 			if dx == 0 and dy == 0:
 				continue
-			if not diagonals and absi(dx) + absi(dy) != 1:
-				continue
-			if diagonals and maxi(absi(dx), absi(dy)) != 1:
-				continue
+			if diag_only:
+				if absi(dx) != 1 or absi(dy) != 1:
+					continue
+			elif not allow_diag:
+				if absi(dx) + absi(dy) != 1:
+					continue
 			var p := origin + Vector2i(dx, dy)
 			if _is_valid_position(p):
 				result.append(p)
@@ -762,10 +774,16 @@ func _get_adjacent_positions(origin: Vector2i) -> Array[Vector2i]:
 func _is_adjacent_to_player(pos: Vector2i) -> bool:
 	var player_pos := CavernGameManager.player_position if CavernGameManager else Vector2i(1, 1)
 	var diff := pos - player_pos
-	if SettingsManager.get_setting("gameplay", "diagonal_movement", false):
-		return maxi(absi(diff.x), absi(diff.y)) == 1
-	else:
-		return absi(diff.x) + absi(diff.y) == 1
+	var dx := absi(diff.x)
+	var dy := absi(diff.y)
+	var mode := _get_movement_mode()
+	match mode:
+		"combined":
+			return maxi(dx, dy) == 1
+		"diagonal":
+			return dx == 1 and dy == 1
+		_:
+			return dx + dy == 1
 
 
 func _is_valid_position(pos: Vector2i) -> bool:

@@ -28,8 +28,6 @@ func _get_temp_path() -> String:
 	return SAVE_DIR + domain_name + ".json.tmp"
 
 
-## --- Public API ---
-
 func set_value(key: String, value: Variant) -> void:
 	data[key] = value
 	_dirty = true
@@ -71,8 +69,6 @@ func clear() -> void:
 	if FileAccess.file_exists(backup):
 		DirAccess.remove_absolute(backup)
 
-
-## --- Disk Operations ---
 
 func save() -> bool:
 	if not _dirty and is_loaded:

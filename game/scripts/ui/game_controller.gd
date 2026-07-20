@@ -19,7 +19,8 @@ func _ready() -> void:
 
 
 func _start_new_game() -> void:
-	CavernGameManager.start_new_game()
+	if not CavernGameManager or not CavernGameManager.is_game_active:
+		CavernGameManager.start_new_game()
 	if grid:
 		grid.initialize_new_game()
 

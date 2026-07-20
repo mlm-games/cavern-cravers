@@ -13,6 +13,14 @@ const GRID_SIZE := 4
 const STARTING_HEALTH := 15
 const MAX_HEALTH := 15
 
+const MODE_ADJACENT := "adjacent"
+const MODE_COMBINED := "combined"
+const MODE_DIAGONAL := "diagonal"
+
+const UNLOCK_COMBINED := 300
+const UNLOCK_DIAGONAL := 1000
+const UNLOCK_DIAGONAL_FROM_COMBINED := 1500
+
 var player_health: int = STARTING_HEALTH
 var player_shield: int = 0
 var player_position: Vector2i = Vector2i(1, 1)
@@ -21,6 +29,9 @@ var undo_available: bool = true
 
 var is_game_active: bool = false
 var turn_count: int = 0
+
+## adjacent | combined | diagonal — set when starting / loading a run
+var movement_mode: String = MODE_ADJACENT
 
 var _undo_state: Dictionary = {}
 
@@ -33,18 +44,37 @@ const JEWEL_VALUES := {
 	"diamond": 13
 }
 
-## Cached from SaveManager on ready — no repeated disk reads
+## Cached best for current mode (and overall adjacent for unlocks / menu)
 var high_score: int = 0
 var tutorial_completed: bool = false
 
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	high_score = SaveManager.get_high_score()
+	high_score = SaveManager.get_high_score(MODE_ADJACENT)
 	tutorial_completed = SaveManager.is_tutorial_completed()
 
 
-func start_new_game() -> void:
+func get_movement_mode() -> String:
+	return movement_mode
+
+
+func is_mode_unlocked(mode: String) -> bool:
+	match mode:
+		MODE_COMBINED:
+			return SaveManager.get_unlock_high_score() >= UNLOCK_COMBINED
+		MODE_DIAGONAL:
+			return SaveManager.get_high_score(MODE_ADJACENT) >= UNLOCK_DIAGONAL \
+			    or SaveManager.get_high_score(MODE_COMBINED) >= UNLOCK_DIAGONAL_FROM_COMBINED
+		_:
+			return true
+
+
+func start_new_game(mode: String = MODE_ADJACENT) -> void:
+	if not is_mode_unlocked(mode):
+		mode = MODE_ADJACENT
+	movement_mode = mode
+
 	player_health = STARTING_HEALTH
 	player_shield = 0
 	player_position = Vector2i(1, 1)
@@ -53,6 +83,8 @@ func start_new_game() -> void:
 	is_game_active = true
 	turn_count = 0
 	_undo_state.clear()
+
+	high_score = SaveManager.get_high_score(movement_mode)
 
 	health_changed.emit(player_health, MAX_HEALTH)
 	score_changed.emit(score)
@@ -152,8 +184,6 @@ func get_difficulty_scale() -> float:
 	return 1.0 + (turn_count * 0.02)
 
 
-## --- Save / Load ---
-
 func _save_game() -> void:
 	if not is_game_active:
 		return
@@ -171,6 +201,7 @@ func _save_game() -> void:
 			"undo_available": undo_available,
 		},
 		"turn_count": turn_count,
+		"movement_mode": movement_mode,
 		"grid": grid_node.serialize_grid(),
 	}
 
@@ -195,6 +226,10 @@ func load_game() -> bool:
 	score = int(player_data.get("score", 0))
 	undo_available = player_data.get("undo_available", true)
 	turn_count = int(save_data.get("turn_count", 0))
+	movement_mode = str(save_data.get("movement_mode", MODE_ADJACENT))
+	if movement_mode not in [MODE_ADJACENT, MODE_COMBINED, MODE_DIAGONAL]:
+		movement_mode = MODE_ADJACENT
+	high_score = SaveManager.get_high_score(movement_mode)
 	is_game_active = true
 
 	health_changed.emit(player_health, MAX_HEALTH)
@@ -210,13 +245,13 @@ func has_saved_game() -> bool:
 	return SaveManager.has_game_save()
 
 
-## --- Settings ---
-
 func _update_high_score(new_score: int) -> bool:
-	if new_score > high_score:
+	var mode_best := SaveManager.get_high_score(movement_mode)
+	if new_score > mode_best:
+		SaveManager.set_high_score(new_score, movement_mode)
 		high_score = new_score
-		SaveManager.set_high_score(high_score)
 		return true
+	high_score = mode_best
 	return false
 
 
